@@ -57,18 +57,18 @@ from res_net import *
 model = ResNet(input_shape = (img_width, img_height, 3), classes = classes)
 if (mode == 'sgd'): optimizer = SGD(lr=1e-3, decay=1e-6, momentum=0.9, nesterov=True) #This one seems to work better
 if (mode == 'adam'): optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
-try:
-	model.load_weights("weights.best.hdf5")
-        model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
-except:
-        model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
+# try:
+#     model.load_weights("weights.best.hdf5")
+#     model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
+# except:
+model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
 
 #==========================================================================
 #PART 2 - Import Data and Set-up Training Parameters (Callbacks, etc.)
 #==========================================================================
 
 # Load Dataset (note that test data is loaded separately lower down - this helps with memory)
-X_train, Y_train_orig, classes = load_train_dataset()
+X_train, Y_train_orig, classes = load_dataset()
 
 # It's not necessary to normalize X_train because of the Scale step in the neural network (after BatchNorm)
 

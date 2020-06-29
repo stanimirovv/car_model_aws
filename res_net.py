@@ -68,7 +68,7 @@ def ResNet(input_shape = (224, 224, 3), classes = 196):
 
     #Transfer learning from pretrained weights
     model = Model(inputs = X_input, outputs = Xfc, name='Cifar10_transfer_learning')
-    model.load_weights('models/resnet152_weights_tf.h5', by_name=True)
+    # model.load_weights('models/resnet152_weights_tf.h5', by_name=True)
 
     # Switch to the final output layer
     Xfc2 = AveragePooling2D((7, 7), name='avg_pool')(X)
